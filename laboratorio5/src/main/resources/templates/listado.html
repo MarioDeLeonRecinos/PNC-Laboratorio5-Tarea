@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="en">
+<head>
+<meta charset="ISO-8859-1">
+<title>Mostrar estudiante por llave primarioa</title>
+</head>
+<body>
+	<table>
+		<thead>
+			<th>ID</th>
+			<th>Nombre</th>
+			<th>Apellido</th>
+			<th>Carnet</th>
+			<th>Carrera</th>
+		</thead>
+		<th:block th:each="estudiante, row:${estudiantes}">
+			<tr>
+				<th th:text="${estudiante.cusuario}" />
+				<th th:text="${estudiante.nombre}" />
+				<th th:text="${estudiante.apellido}" />
+				<th th:text="${estudiante.carne}" />
+				<th th:text="${estudiante.carrera}" />
+			</tr>
+		</th:block>
+	</table>
+</body>
+</html>
