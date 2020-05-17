@@ -2,8 +2,11 @@ package com.mario.capas.tarea5.laboratorio5.controller;
 
 import java.util.List;
 
+import javax.validation.Valid;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
@@ -27,11 +30,16 @@ public class MainController {
 	}
 
 	@RequestMapping("/guardar")
-	public ModelAndView guardar(@ModelAttribute Estudiante estudiante) {
+	public ModelAndView guardar(@Valid @ModelAttribute Estudiante estudiante,BindingResult result) {
 		ModelAndView mav = new ModelAndView();
-		mav.addObject("estudiante",new Estudiante());
-		mav.setViewName("index");
-		estudianteDAO.save(estudiante);
+		if (result.hasErrors()) {
+			mav.setViewName("index");
+		} else {
+			mav.addObject("estudiante",new Estudiante());
+			mav.setViewName("index");
+			estudianteDAO.save(estudiante);
+		}
+		
 		return mav;
 	}
 	

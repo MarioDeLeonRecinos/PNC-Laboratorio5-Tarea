@@ -19,20 +19,20 @@ public class Estudiante {
 	@Column(name = "c_usuario")
 	private Integer cusuario;
 
-	@Column(name = "nombre")
 	@Size(min = 1,max = 50,message = "Escriba su nombre de 1 a 50 caracteres")
+	@Column(name = "nombre")
 	private String nombre;
 
-	@Column(name = "apellido")
 	@Size(min = 1,max = 50,message = "Escriba su apellido de 1 a 50 caracteres")
+	@Column(name = "apellido")	
 	private String apellido;
 
-	@Column(name = "carne")
 	@Size(min = 1,max = 10,message = "Escriba su carne de 1 a 10 caracteres")
+	@Column(name = "carne")
 	private String carne;
 
-	@Column(name = "carrera")
 	@Size(min = 1,max = 100,message = "Escriba su carrera de 1 a 100 caracteres")
+	@Column(name = "carrera")
 	private String carrera;
 	
 	public Estudiante() {
