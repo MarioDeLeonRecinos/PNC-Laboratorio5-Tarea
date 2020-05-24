@@ -4,11 +4,13 @@ import java.util.List;
 
 import javax.validation.Valid;
 
+import org.hibernate.sql.Delete;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.mario.capas.tarea5.laboratorio5.dao.EstudianteDAO;
@@ -40,6 +42,17 @@ public class MainController {
 			estudianteDAO.save(estudiante);
 		}
 		
+		return mav;
+	}
+	
+	@RequestMapping("/borrar")
+	public ModelAndView Delete(@RequestParam(value = "codigo") Integer codigo) {
+		ModelAndView mav = new ModelAndView();
+		estudianteDAO.delete(codigo);
+		List<Estudiante> estudiantes = estudianteDAO.findAll();
+
+		mav.addObject("estudiantes", estudiantes);
+		mav.setViewName("listado");
 		return mav;
 	}
 	

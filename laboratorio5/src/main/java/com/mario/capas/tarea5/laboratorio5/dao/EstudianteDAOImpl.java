@@ -47,4 +47,10 @@ public class EstudianteDAOImpl implements EstudianteDAO {
 
 	}
 
+	@Transactional
+	public void delete(Integer code) throws DataAccessException {
+		Estudiante estudiante = findOne(code);
+		entityManager.remove(estudiante);
+	}
+
 }

@@ -40,5 +40,9 @@
 
 	</form>
 	<input type="button"  value="Listado" onclick="location.href='./listado'" />
+	<form th:action="@{/borrar}" method="post">
+	<input type="number" name="codigo">
+	<input type="submit"  value="Borrar" />
+	</form>
 </body>
 </html>
